@@ -1,6 +1,7 @@
 require('dotenv/config');
 
 module.exports = {
+  pathPrefix: '/rcmas-calc',
   siteMetadata: {
     title: 'rcmas-calc',
     author: {
