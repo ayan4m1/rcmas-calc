@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-a178c4450dabaedb6b9f.js"
+    "url": "webpack-runtime-c81ac990606eecbed533.js"
   },
   {
     "url": "framework-9af66c1157a094def693.js"
@@ -39,21 +39,29 @@ self.__precacheManifest = [
     "url": "styles-f7a64dad1c13bebc31fd.js"
   },
   {
-    "url": "app-4adbb414652c829fa6a6.js"
+    "url": "app-e093ee0342192d9e6ebe.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "5c3f48e83e6864bd61ae12278b9c4d32"
+    "revision": "6ffb27057afbfa90edbd631fce2e63f6"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-e5cb9e0c77a823b86dc2.js"
+  },
+  {
+    "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
+    "revision": "f6081b83111aea4128c98944b7fafccc"
+  },
+  {
+    "url": "page-data/app-data.json",
+    "revision": "c7f2b232e3734eed58b6394ea5f26fde"
   },
   {
     "url": "polyfill-df55473ac97b7f17120d.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "51d5f78d41fd2e88b6457fce69c762bb"
+    "revision": "faa9a38d2fecdf15e2a2b7f8bfe987e4"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -140,12 +148,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^`), ``)
+  pathname = pathname.replace(new RegExp(`^/rcmas-calc`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-4adbb414652c829fa6a6.js`))) {
+  if (!resources || !(await caches.match(`/rcmas-calc/app-e093ee0342192d9e6ebe.js`))) {
     return await fetch(event.request)
   }
 
@@ -158,7 +166,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/rcmas-calc/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
