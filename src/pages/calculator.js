@@ -159,20 +159,20 @@ export default function CalculatorPage() {
             <Col>Age Range: {results.ageRange}</Col>
           </Row>
           <Row>
-            <Col>TOT {results.score.t}</Col>
             <Col>DEF {results.score.d}</Col>
+            <Col>TOT {results.score.t}</Col>
             <Col>PHY {results.score.p}</Col>
             <Col>WOR {results.score.w}</Col>
             <Col>SOC {results.score.s}</Col>
           </Row>
           <Row>
             <Col>
-              <p>T-score {results.ranks.t?.t}</p>
-              <p>Percentile {results.ranks.t?.p}</p>
-            </Col>
-            <Col>
               <p>T-score {results.ranks.d?.t}</p>
               <p>Percentile {results.ranks.d?.p}</p>
+            </Col>
+            <Col>
+              <p>T-score {results.ranks.t?.t}</p>
+              <p>Percentile {results.ranks.t?.p}</p>
             </Col>
             <Col>
               <p>T-score {results.ranks.p?.t}</p>
