@@ -1,11 +1,12 @@
 import React, { Fragment, useCallback, useState } from 'react';
-import { Form, Row, Col, Button } from 'react-bootstrap';
+import { Form, Row, Col, Button, Table } from 'react-bootstrap';
 import { Formik, Field } from 'formik';
 
 import {
   ageRanges,
   invertMask,
   categoryMask,
+  inc,
   tot,
   def,
   phy,
@@ -58,10 +59,13 @@ export default function CalculatorPage() {
         s: soc(ageRange, score.s)
       };
 
+      const indexScore = inc(answers);
+
       setResults({
         ageRange,
         score,
-        ranks
+        ranks,
+        indexScore
       });
     },
     [setResults]
@@ -158,35 +162,61 @@ export default function CalculatorPage() {
           <Row>
             <Col>Age Range: {results.ageRange}</Col>
           </Row>
-          <Row>
-            <Col>DEF {results.score.d}</Col>
-            <Col>TOT {results.score.t}</Col>
-            <Col>PHY {results.score.p}</Col>
-            <Col>WOR {results.score.w}</Col>
-            <Col>SOC {results.score.s}</Col>
-          </Row>
-          <Row>
-            <Col>
-              <p>T-score {results.ranks.d?.t}</p>
-              <p>Percentile {results.ranks.d?.p}</p>
-            </Col>
-            <Col>
-              <p>T-score {results.ranks.t?.t}</p>
-              <p>Percentile {results.ranks.t?.p}</p>
-            </Col>
-            <Col>
-              <p>T-score {results.ranks.p?.t}</p>
-              <p>Percentile {results.ranks.p?.p}</p>
-            </Col>
-            <Col>
-              <p>T-score {results.ranks.w?.t}</p>
-              <p>Percentile {results.ranks.w?.p}</p>
-            </Col>
-            <Col>
-              <p>T-score {results.ranks.s?.t}</p>
-              <p>Percentile {results.ranks.s?.p}</p>
-            </Col>
-          </Row>
+          <Table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Score</th>
+                <th>T-score</th>
+                <th>Percentile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>DEF</td>
+                <td>{results.score.d}</td>
+                <td>{results.ranks.d?.t}</td>
+                <td>{results.ranks.d?.p}</td>
+              </tr>
+              <tr>
+                <td>TOT</td>
+                <td>{results.score.t}</td>
+                <td>{results.ranks.t?.t}</td>
+                <td>{results.ranks.t?.p}</td>
+              </tr>
+              <tr>
+                <td>PHY</td>
+                <td>{results.score.p}</td>
+                <td>{results.ranks.p?.t}</td>
+                <td>{results.ranks.p?.p}</td>
+              </tr>
+              <tr>
+                <td>WOR</td>
+                <td>{results.score.w}</td>
+                <td>{results.ranks.w?.t}</td>
+                <td>{results.ranks.w?.p}</td>
+              </tr>
+              <tr>
+                <td>SOC</td>
+                <td>{results.score.s}</td>
+                <td>{results.ranks.s?.t}</td>
+                <td>{results.ranks.s?.p}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>INC</td>
+                <td
+                  colSpan="4"
+                  className={
+                    results.indexScore >= 6 ? 'bg-danger' : 'bg-success'
+                  }
+                >
+                  {results.indexScore}
+                </td>
+              </tr>
+            </tfoot>
+          </Table>
         </Fragment>
       )}
     </Layout>

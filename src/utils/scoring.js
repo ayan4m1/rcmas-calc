@@ -12,6 +12,35 @@ export const categoryMask = 'PWWSPWPWSSPWSDPWWWDPWSSDPWSSDWPWDPWSSDPDSWPDWPSDW'.
   ''
 );
 
+export const indexPairs = [
+  [1, 7],
+  [2, 34],
+  [3, 9],
+  [5, 48],
+  [6, 38],
+  [18, 32],
+  [22, 36],
+  [23, 28]
+];
+
+export const inc = (answers) => {
+  let score = 0;
+
+  const answersSplit = answers.split('');
+
+  for (const [firstIndex, secondIndex] of indexPairs) {
+    if (answersSplit[firstIndex] !== answersSplit[secondIndex]) {
+      score++;
+    }
+  }
+
+  if (answersSplit[37] === answersSplit[47]) {
+    score++;
+  }
+
+  return score;
+};
+
 export const tot = (age, score) => {
   if (age === 'late') {
     if (score > 37) {
