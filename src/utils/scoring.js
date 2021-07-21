@@ -4,13 +4,11 @@ export const ageRanges = {
   late: { min: 15, max: 19 }
 };
 
-export const invertMask = '0000000000000000000000000000000000000001000100010'.split(
-  ''
-);
+export const invertMask =
+  '0000000000000000000000000000000000000001000100010'.split('');
 
-export const categoryMask = 'PWWSPWPWSSPWSDPWWWDPWSSDPWSSDWPWDPWSSDPDSWPDWPSDW'.split(
-  ''
-);
+export const categoryMask =
+  'PWWSPWPWSSPWSDPWWWDPWSSDPWSSDWPWDPWSSDPDSWPDWPSDW'.split('');
 
 export const indexPairs = [
   [1, 7],
