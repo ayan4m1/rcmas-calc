@@ -12,16 +12,14 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:import/errors',
-    'prettier',
-    'prettier/react'
+    'prettier'
   ],
-  parser: '@babel/eslint-parser',
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true
     },
-    ecmaVersion: 12,
-    requireConfigFile: false
+    ecmaVersion: 12
   },
   rules: {
     'accessor-pairs': 2,
