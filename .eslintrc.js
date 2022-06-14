@@ -11,11 +11,11 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:prettier/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:import/errors',
-    'prettier'
+    'plugin:import/recommended'
   ],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
+    requireConfigFile: false,
     ecmaFeatures: {
       jsx: true
     },
@@ -161,7 +161,9 @@ module.exports = {
     'no-console': 2,
     'no-debugger': 2,
     'prettier/prettier': 2,
-    'jsx-a11y/label-has-for': 0
+    'jsx-a11y/label-has-for': 0,
+    'react/jsx-uses-react': 0,
+    'react/react-in-jsx-scope': 0
   },
   settings: {
     react: {
