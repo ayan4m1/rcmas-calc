@@ -1,2 +1,0 @@
-(self.webpackChunkrcmas_calc=self.webpackChunkrcmas_calc||[]).push([[883],{9616:function(t,e,a){"use strict";a.r(e),a.d(e,{default:function(){return l}});var n=a(7294),u=a(8255),c=a(2335);function l(t){var e=t.data.site.siteMetadata.title;return n.createElement(u.Z,{title:e},n.createElement(c.Z,{title:"404: Not Found"}),n.createElement("h1",null,"Not Found"),n.createElement("p",null,"You just hit a route that doesn't exist... the sadness."))}}}]);
-//# sourceMappingURL=component---src-pages-404-js-421327011ee9a2641126.js.map

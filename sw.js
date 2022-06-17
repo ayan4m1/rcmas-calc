@@ -27,38 +27,27 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-671d6b841311267c5207.js"
+    "url": "webpack-runtime-98e38b01ce0f3482cd26.js"
   },
   {
-    "url": "framework-1c86668419dc18759abb.js"
+    "url": "framework-da78d5359fe57b076640.js"
   },
   {
-    "url": "styles.d666d35f422b42288035.css"
+    "url": "styles.f075628d41206027fda4.css"
   },
   {
-    "url": "app-1ec2a99145a3c1579aea.js"
+    "url": "app-eda51fa3c292bf6a8f63.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "0811202e0bbb5b78984c13c03f8fb7cb"
+    "revision": "9a7935c14b4ea59802596a031aebf8a0"
   },
   {
-    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-4e0f492bbfec71f79a1b.js"
-  },
-  {
-    "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
-    "revision": "f6081b83111aea4128c98944b7fafccc"
-  },
-  {
-    "url": "page-data/app-data.json",
-    "revision": "fefe51210da8fcbbc31b3bd189c82751"
-  },
-  {
-    "url": "polyfill-b4c6385fa613430a324d.js"
+    "url": "polyfill-82919b2763364892d578.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "faa9a38d2fecdf15e2a2b7f8bfe987e4"
+    "revision": "80dec57dc235db02cccddf592515e067"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -84,6 +73,24 @@ const MessageAPI = {
 
   clearPathResources: event => {
     event.waitUntil(idbKeyval.clear())
+
+    // We detected compilation hash mismatch
+    // we should clear runtime cache as data
+    // files might be out of sync and we should
+    // do fresh fetches for them
+    event.waitUntil(
+      caches.keys().then(function (keyList) {
+        return Promise.all(
+          keyList.map(function (key) {
+            if (key && key.includes(`runtime`)) {
+              return caches.delete(key)
+            }
+
+            return Promise.resolve()
+          })
+        )
+      })
+    )
   },
 
   enableOfflineShell: () => {
@@ -150,7 +157,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/rcmas-calc/app-1ec2a99145a3c1579aea.js`))) {
+  if (!resources || !(await caches.match(`/rcmas-calc/app-eda51fa3c292bf6a8f63.js`))) {
     return await fetch(event.request)
   }
 
