@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkrcmas_calc=self.webpackChunkrcmas_calc||[]).push([[883],{429:function(t,s,e){e.r(s),e.d(s,{default:function(){return r}});var n=e(5808),c=e(5739),u=e(5893);function r(){return(0,u.jsxs)(n.Z,{children:[(0,u.jsx)(c.Z,{title:"Not Found"}),(0,u.jsx)("h1",{children:"Not Found"}),(0,u.jsx)("p",{children:"You just hit a route that doesn't exist... the sadness."})]})}}}]);
+//# sourceMappingURL=component---src-pages-404-js-932a8cb795d14e430513.js.map

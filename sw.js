@@ -27,23 +27,20 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-98e38b01ce0f3482cd26.js"
+    "url": "webpack-runtime-4486754e5e93e5c7dde5.js"
   },
   {
-    "url": "framework-da78d5359fe57b076640.js"
+    "url": "framework-60c6ca74d3cbf3ccb39c.js"
   },
   {
-    "url": "styles.f075628d41206027fda4.css"
+    "url": "styles.0f43beb49aa6e387af9b.css"
   },
   {
-    "url": "app-eda51fa3c292bf6a8f63.js"
+    "url": "app-1926a0aabdae6e8d328c.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "9a7935c14b4ea59802596a031aebf8a0"
-  },
-  {
-    "url": "polyfill-82919b2763364892d578.js"
+    "revision": "297b29467a1776884c0123e46f4b5585"
   },
   {
     "url": "manifest.webmanifest",
@@ -157,7 +154,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/rcmas-calc/app-eda51fa3c292bf6a8f63.js`))) {
+  if (!resources || !(await caches.match(`/rcmas-calc/app-1926a0aabdae6e8d328c.js`))) {
     return await fetch(event.request)
   }
 
