@@ -1,6 +1,6 @@
-import { Fragment, useCallback, useState } from 'react';
-import { Form, Row, Col, Button, Table } from 'react-bootstrap';
-import { Formik, Field } from 'formik';
+import { useCallback, useState } from 'react';
+import { Form, Row, Col, Button, Table, Card } from 'react-bootstrap';
+import { useFormik } from 'formik';
 
 import {
   ageRanges,
@@ -94,71 +94,70 @@ export default function CalculatorPage() {
     return errors;
   }, []);
 
+  const { errors, touched, handleChange, handleSubmit, values } = useFormik({
+    initialValues: {
+      age: 0,
+      answers: '',
+      answersConfirm: ''
+    },
+    validate,
+    onSubmit
+  });
+
   return (
     <Layout>
-      <Formik
-        initialValues={{ age: 0, answers: '', answersConfirm: '' }}
-        validate={validate}
-        onSubmit={onSubmit}
-      >
-        {({ errors, touched, handleChange, handleSubmit, values }) => (
-          <Form onSubmit={handleSubmit}>
-            <Form.Group>
-              <Form.Label>Patient Age</Form.Label>
-              <Field
-                as={Form.Control}
-                type="number"
-                name="age"
-                value={values.age}
-                onChange={handleChange}
-                isInvalid={Boolean(errors.age)}
-              />
-              {errors.age && touched.age && (
-                <Form.Control.Feedback type="invalid">
-                  {errors.age}
-                </Form.Control.Feedback>
-              )}
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Answers (1 = YES, 2 = NO)</Form.Label>
-              <Field
-                as={Form.Control}
-                type="text"
-                name="answers"
-                value={values.answers}
-                onChange={handleChange}
-                isInvalid={Boolean(errors.answers)}
-              />
-              {errors.answers && touched.answers && (
-                <Form.Control.Feedback type="invalid">
-                  {errors.answers}
-                </Form.Control.Feedback>
-              )}
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Confirm Answers</Form.Label>
-              <Field
-                as={Form.Control}
-                type="text"
-                name="answersConfirm"
-                value={values.answersConfirm}
-                onChange={handleChange}
-                isInvalid={Boolean(errors.answersConfirm)}
-              />
-              {errors.answersConfirm && touched.answersConfirm && (
-                <Form.Control.Feedback type="invalid">
-                  {errors.answersConfirm}
-                </Form.Control.Feedback>
-              )}
-            </Form.Group>
-            <Form.Group>
-              <Button type="submit">Submit</Button>
-            </Form.Group>
-          </Form>
-        )}
-      </Formik>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Form.Label>Patient Age</Form.Label>
+          <Form.Control
+            type="number"
+            name="age"
+            value={values.age}
+            onChange={handleChange}
+            isInvalid={Boolean(errors.age)}
+          />
+          {errors.age && touched.age && (
+            <Form.Control.Feedback type="invalid">
+              {errors.age}
+            </Form.Control.Feedback>
+          )}
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Answers (1 = YES, 2 = NO)</Form.Label>
+          <Form.Control
+            type="text"
+            name="answers"
+            value={values.answers}
+            onChange={handleChange}
+            isInvalid={Boolean(errors.answers)}
+          />
+          {errors.answers && touched.answers && (
+            <Form.Control.Feedback type="invalid">
+              {errors.answers}
+            </Form.Control.Feedback>
+          )}
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Confirm Answers</Form.Label>
+          <Form.Control
+            type="text"
+            name="answersConfirm"
+            value={values.answersConfirm}
+            onChange={handleChange}
+            isInvalid={Boolean(errors.answersConfirm)}
+          />
+          {errors.answersConfirm && touched.answersConfirm && (
+            <Form.Control.Feedback type="invalid">
+              {errors.answersConfirm}
+            </Form.Control.Feedback>
+          )}
+        </Form.Group>
+        <Form.Group className="mt-2">
+          <Button type="submit">Submit</Button>
+        </Form.Group>
+      </Form>
       {results.ageRange && (
-        <Fragment>
+        <Card body className="mt-4">
           <Row>
             <Col>Age Range: {results.ageRange}</Col>
           </Row>
@@ -217,7 +216,7 @@ export default function CalculatorPage() {
               </tr>
             </tfoot>
           </Table>
-        </Fragment>
+        </Card>
       )}
     </Layout>
   );
