@@ -1,7 +1,8 @@
-import { useCallback, useState } from 'react';
+import { Fragment, useCallback, useState } from 'react';
 import { Form, Row, Col, Button, Table, Card } from 'react-bootstrap';
 import { useFormik } from 'formik';
 
+import Layout from 'components/Layout';
 import {
   ageRanges,
   invertMask,
@@ -12,8 +13,15 @@ import {
   phy,
   wor,
   soc
-} from '~utils/scoring';
-import Layout from '~components/Layout';
+} from 'utils/scoring';
+
+export function Head() {
+  return (
+    <Fragment>
+      <title>Calculator</title>
+    </Fragment>
+  );
+}
 
 export default function CalculatorPage() {
   const [results, setResults] = useState({});
@@ -110,11 +118,11 @@ export default function CalculatorPage() {
         <Form.Group>
           <Form.Label>Patient Age</Form.Label>
           <Form.Control
-            type="number"
-            name="age"
-            value={values.age}
-            onChange={handleChange}
             isInvalid={Boolean(errors.age)}
+            name="age"
+            onChange={handleChange}
+            type="number"
+            value={values.age}
           />
           {errors.age && touched.age && (
             <Form.Control.Feedback type="invalid">
@@ -125,11 +133,11 @@ export default function CalculatorPage() {
         <Form.Group>
           <Form.Label>Answers (1 = YES, 2 = NO)</Form.Label>
           <Form.Control
-            type="text"
-            name="answers"
-            value={values.answers}
-            onChange={handleChange}
             isInvalid={Boolean(errors.answers)}
+            name="answers"
+            onChange={handleChange}
+            type="text"
+            value={values.answers}
           />
           {errors.answers && touched.answers && (
             <Form.Control.Feedback type="invalid">
@@ -140,11 +148,11 @@ export default function CalculatorPage() {
         <Form.Group>
           <Form.Label>Confirm Answers</Form.Label>
           <Form.Control
-            type="text"
-            name="answersConfirm"
-            value={values.answersConfirm}
-            onChange={handleChange}
             isInvalid={Boolean(errors.answersConfirm)}
+            name="answersConfirm"
+            onChange={handleChange}
+            type="text"
+            value={values.answersConfirm}
           />
           {errors.answersConfirm && touched.answersConfirm && (
             <Form.Control.Feedback type="invalid">
@@ -206,10 +214,10 @@ export default function CalculatorPage() {
               <tr>
                 <td>INC</td>
                 <td
-                  colSpan="4"
                   className={
                     results.indexScore >= 6 ? 'bg-danger' : 'bg-success'
                   }
+                  colSpan="4"
                 >
                   {results.indexScore}
                 </td>

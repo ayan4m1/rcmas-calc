@@ -25,9 +25,14 @@ module.exports = {
         icon: 'content/assets/gatsby-icon.png'
       }
     },
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-offline',
     'gatsby-plugin-sass',
-    'gatsby-plugin-eslint'
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        configType: 'flat',
+        eslintPath: 'eslint/use-at-your-own-risk'
+      }
+    }
   ]
 };

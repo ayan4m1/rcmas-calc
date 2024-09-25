@@ -1,12 +1,20 @@
-import Layout from '~components/Layout';
-import SEO from '~components/SEO';
+import { Fragment } from 'react';
+
+import Layout from 'components/Layout';
+
+export function Head() {
+  return (
+    <Fragment>
+      <title>Page Not Found</title>
+    </Fragment>
+  );
+}
 
 export default function NotFoundPage() {
   return (
     <Layout>
-      <SEO title="Not Found" />
-      <h1>Not Found</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <h1>Page Not Found</h1>
+      <p>You just tried to access a page that doesn&#39;t exist!</p>
     </Layout>
   );
 }
