@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "ayan4m1 <andrew@bulletlogic.com>",
   "dependencies": {
+    "@ayan4m1/gatsby-plugin-root-import": "^2.0.10",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",

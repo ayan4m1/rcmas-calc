@@ -33,6 +33,7 @@ module.exports = {
         configType: 'flat',
         eslintPath: 'eslint/use-at-your-own-risk'
       }
-    }
+    },
+    '@ayan4m1/gatsby-plugin-root-import'
   ]
 };
