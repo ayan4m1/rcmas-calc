@@ -15,14 +15,12 @@ module.exports = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'RCMAS-2 Calc',
-        /* eslint-disable camelcase */
         short_name: 'RCMAS-2',
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#663399',
-        /* eslint-enable camelcase */
         display: 'minimal-ui',
-        icon: 'content/assets/gatsby-icon.png'
+        icon: 'content/assets/favicon.png'
       }
     },
     'gatsby-plugin-offline',
