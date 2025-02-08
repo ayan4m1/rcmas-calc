@@ -35,8 +35,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-eslint',
       options: {
-        configType: 'flat',
-        eslintPath: 'eslint/use-at-your-own-risk'
+        configType: 'flat'
       }
     },
     '@ayan4m1/gatsby-plugin-root-import'
