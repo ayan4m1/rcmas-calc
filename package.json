@@ -58,6 +58,11 @@
   ],
   "license": "MIT",
   "main": "n/a",
+  "packageManager": "yarn@4.12.0",
+  "resolutions": {
+    "lmdb@npm:2.5.2": "npm:3.5.1",
+    "lmdb@npm:2.5.3": "npm:3.5.1"
+  },
   "scripts": {
     "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
@@ -67,6 +72,5 @@
     "clean": "gatsby clean",
     "lint": "eslint ./src/**/*.js",
     "prepare": "husky"
-  },
-  "packageManager": "yarn@4.12.0"
+  }
 }
